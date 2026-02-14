@@ -13,8 +13,6 @@ const theme = createTheme({
   cssVariables: true,
   
   palette: {
-    mode: 'dark',
-    
     primary: {
       main: '#00e676', // Verde neon tecnológico
       light: '#66ffa6',

@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v16-appRouter';
-import { ThemeProvider } from "@mui/material/styles";
-import theme from "./theme";
+import MainHeader from "@/components/MainHeader";
+import Providers from "@/components/Providers";
 
 export const metadata: Metadata = {
   title: "Vitor Villa Verde",
-  description: "Vitor Villa's knowledge and projects he has taken part",
+  description: "Vitor Villa Verde is a professional Web Developer e DevOps passionate about creating new things, this page is the current stack of knowledge he has.",
 };
 
 export default function RootLayout({
@@ -15,18 +14,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" >
-      <meta charSet="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <html lang="en">
       <body
         className={`antialiased`}
       >
-        <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-          <ThemeProvider theme={theme}>
-            {children}
-          </ThemeProvider>
-        </AppRouterCacheProvider>
-
+        <Providers>
+          <MainHeader />
+          {children}
+        </Providers>
       </body>
     </html>
   );
