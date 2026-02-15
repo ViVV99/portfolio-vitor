@@ -11,7 +11,6 @@ const roboto = Roboto({
 
 const theme = createTheme({
   cssVariables: true,
-  
   palette: {
     primary: {
       main: '#00e676', // Verde neon tecnológico
