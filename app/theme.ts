@@ -87,8 +87,18 @@ const theme = createTheme({
   },
   
   components: {
-   
-
+    MuiTextField: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          '& fieldset': {
+            borderColor: theme.palette.primary.dark
+          },
+          '&.active fieldset, & fieldset.active': {
+            borderColor: 'bleu',
+          }
+        })
+      }
+    },
     MuiPaper: {
       styleOverrides: {
         root: {
