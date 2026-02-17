@@ -42,6 +42,12 @@ Follow these steps to set up the project locally:
     # The application will be accessible at http://localhost:3000
     ```
 
+### Thanks to
+
+The header animation came from:
+https://codepen.io/kshitijbhatt/pen/QBbyPm 
+So thanks for the help!
+
 ### 🤝 Connect with Me
 
 * [Your LinkedIn Profile Link]
