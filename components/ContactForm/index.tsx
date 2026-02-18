@@ -1,20 +1,22 @@
 "use client";
 
 import React from "react";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { FormProvider, useForm } from "react-hook-form";
-import { contactSchema } from "@/components/Forms/schemas/contact.schema";
-import { ContactType } from "../Forms/ContactType";
-import Input from "@/components/Input";
-import { Button, Grid } from "@mui/material";
 import toast from "react-hot-toast";
+import { Button, Grid } from "@mui/material";
+import { FormProvider, useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+
+import Input from "@/components/Input";
+import { ContactType } from "../Forms/ContactType";
+import { contactSchema } from "@/components/Forms/schemas/contact.schema";
+import { sendContactAction } from "@/app/actions/contact";
 
 const GridHalfCol = ({ children }: React.PropsWithChildren) => {
   return (
     <Grid
       size={{
         xs: 12,
-        md: 'grow',
+        md: "grow",
       }}
     >
       {children}
@@ -32,14 +34,28 @@ function ContactForm() {
     },
   });
 
-  const onSubmit = (data: ContactType) => {
-    toast.error("Message sent successfully");
+  const onSubmit = async (data: ContactType) => {
+    try {
+      // toast.loading("Sending message...", { id: "contact" });
+
+      const formData = new FormData();
+      formData.append("name", data.name);
+      formData.append("email", data.email);
+      formData.append("message", data.message);
+
+      await sendContactAction(null, formData);
+
+      toast.success("Message sent successfully", { id: "contact" });
+      formMethods.reset();
+    } catch {
+      toast.error("Failed to send message", { id: "contact" });
+    }
   };
 
   return (
     <FormProvider {...formMethods}>
-      <form onSubmit={formMethods.handleSubmit(onSubmit)}>
-        <Grid container spacing={2}>
+      <form onSubmit={formMethods.handleSubmit(onSubmit)} id="contact-section">
+        <Grid mt={5} container spacing={2}>
           <GridHalfCol>
             <Input name="name" label="Your name *" />
           </GridHalfCol>
@@ -47,7 +63,16 @@ function ContactForm() {
             <Input name="email" label="Your email *" />
           </GridHalfCol>
           <Input name="message" multiline minRows={4} label="Message *" />
-          <Button color="primary" variant="contained" size="large" type="submit">Submit</Button>
+          {/* TODO - Loading btn is with wrong style */}
+          <Button
+            color="primary"
+            variant="contained"
+            size="large"
+            type="submit"
+            loading={formMethods.formState.isSubmitting}
+          >
+            Submit
+          </Button>
         </Grid>
       </form>
     </FormProvider>

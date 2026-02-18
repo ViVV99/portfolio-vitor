@@ -239,6 +239,7 @@ export default function CertificationsList({
         {selectedCert && (
           <>
             <DialogTitle
+              component="div"
               sx={{
                 display: "flex",
                 justifyContent: "space-between",

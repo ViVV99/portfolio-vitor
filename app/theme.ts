@@ -1,5 +1,5 @@
 "use client";
-import { createTheme } from '@mui/material/styles';
+import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 import { Roboto } from 'next/font/google';
 
 const roboto = Roboto({
@@ -65,19 +65,38 @@ const theme = createTheme({
     fontFamily: roboto.style.fontFamily,
     
     h1: {
+      fontSize: '6rem',
       fontWeight: 700,
       letterSpacing: '-0.02em',
       WebkitBackgroundClip: 'text',
     },
     
     h2: {
+      fontSize: '3rem',
       fontWeight: 600,
       letterSpacing: '-0.01em',
     },
     
-    h3: {
+        h3: {
+      fontSize: '2.5rem',
       fontWeight: 600,
     },
+
+    h4: {
+      fontSize: '2.5rem',
+      fontWeight: 600,
+    },
+
+    h5: {
+      fontSize: '2.25rem',
+      fontWeight: 600,
+    },
+
+    h6: {
+      fontSize: '1.5rem',
+      fontWeight: 600,
+    },
+    
     
     button: {
       fontWeight: 500,
@@ -147,4 +166,8 @@ const theme = createTheme({
   ],
 });
 
-export default theme;
+
+
+export default responsiveFontSizes(theme);
+
+// export default theme;

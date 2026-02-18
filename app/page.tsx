@@ -1,14 +1,16 @@
-import ContactForm from "@/components/ContactForm";
-import MainHeader from "@/components/MainHeader";
-import { TechCardList, TechCardProps } from "@/components/TechCard";
 import { Box, BoxProps, Container, Grid, Typography } from "@mui/material";
-
 import CodeIcon from "@mui/icons-material/Code";
 import StorageIcon from "@mui/icons-material/Storage";
 import CloudIcon from "@mui/icons-material/Cloud";
+
+import ContactForm from "@/components/ContactForm";
+import MainHeader from "@/components/MainHeader";
+import { TechCardList, TechCardProps } from "@/components/TechCard";
 import { Certification } from "@/components/Certification";
 import CertificationsList from "@/components/Certification";
 import SkillProgressList, { Skill } from "@/components/SkillProgess";
+import Text from "@/components/Text";
+import MainPaper from "@/components/MainPaper";
 
 const certificationsMock: Certification[] = [
   {
@@ -92,7 +94,7 @@ const skills: Skill[] = [
   },
 ];
 
-export const techCardMock: TechCardProps[] = [
+const techCardMock: TechCardProps[] = [
   {
     title: "Full Stack Development",
     description:
@@ -109,7 +111,7 @@ export const techCardMock: TechCardProps[] = [
     icon: <StorageIcon />,
   },
   {
-    title: "Cloud, DevOps & Monitoring",
+    title: "Cloud & DevOps",
     description:
       "Deploy e gerenciamento de aplicações em cloud com práticas de CI/CD e containerização.",
     tags: ["AWS", "Docker", "Kubernetes", "Zabbix", "Grafana"],
@@ -117,13 +119,14 @@ export const techCardMock: TechCardProps[] = [
   },
 ];
 
+
 const Section = ({ children, ...props }: React.PropsWithChildren<BoxProps>) => {
   return (
     <Box
       {...props}
       component="section"
       sx={{
-        my: 2,
+        my: 5,
       }}
     >
       {children}
@@ -190,8 +193,22 @@ export default function Home() {
               />
             </Box>
           </Section>
+
+          <Section>
+            <MainPaper>
+            <Typography variant="h2" mb={2}>
+              About Me
+            </Typography>
+            {/* TODO - Get my age dinamically */}
+            <Text>I&apos;m a 27-year-old developer with a strong passion for technology. I have 5 years of experience working with a wide range of technologies, from backend to frontend, architecture, and database modeling, always aiming to deliver the best possible solutions. 
+              Some of my hobbies are listening to music, reading and cooking.
+              Feel free to contact me so we can work together!</Text>
+              <ContactForm />
+          </MainPaper>
+          </Section>
           {/* Contact Form */}
-          <ContactForm />
+          
+          
         </Container>
       </Grid>
     </>

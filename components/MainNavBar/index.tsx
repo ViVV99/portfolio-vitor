@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Card, CardContent, Chip, Box, Typography, AppBar, Toolbar, List, Button, Theme } from '@mui/material';
+import { AppBar, Toolbar, List, Button, Theme } from '@mui/material';
 
 export default function MainNavBar() {
   return (
@@ -11,7 +11,7 @@ export default function MainNavBar() {
     })}>
         <Toolbar>
             <List sx={{ alignSelf: 'center', float: 'right'}}>
-                <Button color='secondary' variant="outlined">Contact Me!</Button>
+                <Button color='secondary' variant="outlined" component="a" href="#contact-section">Contact Me!</Button>
             </List>
         </Toolbar>
     </AppBar>
